@@ -1,1 +1,1 @@
-# angular-spring-boot
+# Angular Full Stack Development with Java Spring Boot Course Projects
