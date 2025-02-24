@@ -10,3 +10,8 @@ console.log("Frist Value: ", myArray[0])
 myArray[2]= 300
 
 console.log(myArray)
+
+// For/of loop - for arrays 
+for(let value of myArray){
+    console.log(value)
+}
