@@ -1,0 +1,6 @@
+<h2>List of users</h2>
+@for (user of usersList; track $index) {
+    <div>
+        <a [routerLink]="['/users',user]">{{user}} detail</a>
+    </div>
+}
