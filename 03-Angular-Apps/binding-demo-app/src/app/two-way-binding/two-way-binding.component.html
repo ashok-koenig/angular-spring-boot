@@ -1,0 +1,12 @@
+<div>
+    Product Price: <input type="number" [(ngModel)]="productPrice" (change)="doCalculate()"/>
+</div>
+<div>
+    Product Quantity: <input type="number" [(ngModel)]="productQuantity" (change)="doCalculate()"/>
+</div>
+<div>
+    <p>Product price: {{productPrice}}</p>
+    <p>Product Quantity: {{productQuantity}}</p>
+    <p>Total product cost: {{productPrice * productQuantity}}</p>
+    <p>Final cost: {{finalCost}}</p>
+</div>

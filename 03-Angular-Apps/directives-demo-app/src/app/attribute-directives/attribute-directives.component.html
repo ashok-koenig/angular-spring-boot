@@ -1,0 +1,7 @@
+<h3>ngStyle demo</h3>
+<p [style.color]="color">Single style using style property</p>
+<p [ngStyle]="myStyle">Applying multiple styles using ngStyle</p>
+<h3>ngClass demo</h3>
+<p [class.highlight]="isHighlight">Apply single CSS class</p>
+<p [ngClass]="{highlight: isHighlight, enhance: isEnhance}">Apply multiple CSS classes using ngClass</p>
+<button (click)="toggleHighlight()">Toggle Highlist / Enhance</button>

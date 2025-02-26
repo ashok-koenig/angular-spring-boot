@@ -1,0 +1,6 @@
+<h2>List of Todo Items</h2>
+@for (item of listTodo; track $index) {
+    <p>{{item.title}}</p>
+}@empty {
+    <p>No todo item</p>
+}

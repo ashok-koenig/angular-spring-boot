@@ -1,0 +1,27 @@
+<h3>ngFor Directive</h3>
+<h3>Name list</h3>
+<!-- <ul>
+    <li *ngFor="let name of nameList">{{name}}</li>
+</ul> -->
+
+
+<!-- <p *ngIf="nameList.length == 0">No names in the list</p>
+
+<div *ngIf="nameList.length != 0">
+    <p *ngFor="let name of nameList">{{name}}</p>
+</div> -->
+
+@if(nameList.length != 0){
+    <!-- <p *ngFor="let name of nameList">{{name}}</p> -->
+    @for (name of nameList; track $index) {
+        <p>{{name}}</p>
+    }
+} @else {
+    <p>No names in the list</p>
+}
+
+<!-- @for (name of nameList; track $index) {
+    <p>{{name}}</p>
+}@empty {
+    <p>No names in the list</p>
+} -->
