@@ -1,0 +1,31 @@
+<h2>Edit Employee</h2>
+<form [formGroup]="employeeFrom" (ngSubmit)="handleSubmit()">
+    <div class="mb-2">
+        <label class="form-label">Employee Name</label>
+        <input type="text" class="form-control" formControlName="empName">
+        <div class="text-danger" *ngIf="getFormControl('empName').invalid && getFormControl('empName').touched">
+            <p *ngIf="getFormControl('empName').hasError('required')">Name is required</p>
+        </div>
+    </div>
+    <div class="mb-2">
+        <label class="form-label">Employee Email</label>
+        <input type="email" class="form-control" formControlName="empEmail">
+        <div class="text-danger" *ngIf="getFormControl('empEmail').invalid && getFormControl('empEmail').touched">
+            <p *ngIf="getFormControl('empEmail').hasError('required')">Email is required</p>
+            <p *ngIf="getFormControl('empEmail').hasError('email')">Email is invalid</p>
+        </div>
+    </div>
+    <div class="mb-2">
+        <label class="form-label">Employee Salary</label>
+        <input type="text" class="form-control" formControlName="empSalary">
+        <div class="text-danger" *ngIf="getFormControl('empSalary').invalid && getFormControl('empSalary').touched">
+            <p *ngIf="getFormControl('empSalary').hasError('required')">Salary is required</p>
+            <p *ngIf="getFormControl('empSalary').hasError('min')">Salary is invalid</p>
+        </div>
+    </div>
+    <div class="mb-2">
+        <button [disabled]="employeeFrom.invalid" type="submit" class="btn btn-success">Update Employee</button>
+        <p *ngIf="successMessage" class="text-success">{{successMessage}}</p>
+        <p *ngIf="errorMessage" class="text-danger">{{errorMessage | json}}</p>
+    </div>
+</form>
