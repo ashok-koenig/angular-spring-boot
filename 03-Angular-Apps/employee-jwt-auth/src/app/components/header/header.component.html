@@ -6,11 +6,17 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link" aria-current="page" routerLink="/employees" routerLinkActive="active">Employees</a>
-          <a class="nav-link" routerLink="/employees/add" routerLinkActive="active">Add Employee</a>
+          @if (!isLoggedIn) {
+            <a class="nav-link" routerLinkActive="active" routerLink="/login">Login</a>
+            <a class="nav-link" routerLinkActive="active" routerLink="/signup">Register</a>
+          } @else {
+          <a class="nav-link" *ngIf="userRole == 'USER' || userRole=='ADMIN'" aria-current="page" routerLink="/employees" routerLinkActive="active">Employees</a>
+          <a class="nav-link" *ngIf="userRole=='ADMIN'" routerLink="/employees/add" routerLinkActive="active">Add Employee</a>
+          }
           <!-- <a class="nav-link" routerLink="#">Pricing</a>
           <a class="nav-link disabled" aria-disabled="true">Disabled</a> -->
         </div>
       </div>
+      <button *ngIf="isLoggedIn" class="btn btn-secondary" (click)="handleLogout()">Logout</button>
     </div>
   </nav>
