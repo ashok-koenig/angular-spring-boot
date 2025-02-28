@@ -1,0 +1,8 @@
+<h1>Hello, {{title}}</h1>
+<form [formGroup]="myForm" (ngSubmit)="handleSubmit()">
+  Number 1: <input type="number" formControlName="num1">
+  Number 2: <input type="number" formControlName="num2">
+  <button type="submit">Add</button>
+</form>
+<hr>
+<h2 id="result">Result: {{result}}</h2>
