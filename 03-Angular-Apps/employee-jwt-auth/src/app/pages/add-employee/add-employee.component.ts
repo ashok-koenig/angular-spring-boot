@@ -25,9 +25,24 @@ export class AddEmployeeComponent {
   errorMessage: string =''
   selectedFile: File | null = null;
   onFileSelected(event: any) {
-    if (event.target.files.length > 0) {
+    if (event.target.files.length > 0) {      
       this.selectedFile = event.target.files[0];
+      if(this.selectedFile && this.selectedFile.size > 1024*1024 *5){
+        // show error here
+      }
     }
+  }
+
+  step = 1;
+  nextStep(){
+    if(this.getFormControl('empName').invalid && this.step ==1) return;
+    if(this.getFormControl('empEmail').invalid && this.step ==2) return;
+    if(this.getFormControl('empSalary').invalid && this.step ==3) return;
+    if(this.step <4) this.step++
+  }
+
+  prevStep(){
+    if(this.step > 1) this.step--
   }
   handleSubmit(){
     this.successMessage = ''
