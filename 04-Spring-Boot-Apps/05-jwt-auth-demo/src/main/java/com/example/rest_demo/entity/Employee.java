@@ -25,6 +25,16 @@ public class Employee {
     @Column(name = "emp_salary")
     private Double empSalary;
 
+    private String empPhoto;
+
+    public String getEmpPhoto() {
+        return empPhoto;
+    }
+
+    public void setEmpPhoto(String empPhoto) {
+        this.empPhoto = empPhoto;
+    }
+
     // We must provide default constructor and getter/setter methods for all field, to act the entity as POJO
 
     public Employee() {

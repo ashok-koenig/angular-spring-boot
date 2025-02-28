@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -20,8 +21,8 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public ResponseEntity<Employee> createEmployee(@Valid @RequestBody Employee employee){
-        return ResponseEntity.status(HttpStatus.CREATED).body(employeeService.createEmployee(employee));
+    public ResponseEntity<Employee> createEmployee(@Valid @RequestPart Employee employee, @RequestPart("empPhoto") MultipartFile file){
+        return ResponseEntity.status(HttpStatus.CREATED).body(employeeService.createEmployee(employee, file));
     }
 
     @GetMapping

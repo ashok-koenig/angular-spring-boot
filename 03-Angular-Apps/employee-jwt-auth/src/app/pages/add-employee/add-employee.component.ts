@@ -23,12 +23,20 @@ export class AddEmployeeComponent {
   }
   successMessage: string =''
   errorMessage: string =''
+  selectedFile: File | null = null;
+  onFileSelected(event: any) {
+    if (event.target.files.length > 0) {
+      this.selectedFile = event.target.files[0];
+    }
+  }
   handleSubmit(){
     this.successMessage = ''
     this.errorMessage = ''
     const {empName, empEmail, empSalary} = this.employeeFrom.value
-    if(this.employeeFrom.valid && empName && empEmail && empSalary){      
-      this.employeeService.createEmployee({empName, empEmail, empSalary: Number(empSalary)})
+    // if(this.employeeFrom.valid && empName && empEmail && empSalary){      
+    //   this.employeeService.createEmployee({empName, empEmail, empSalary: Number(empSalary)})
+    if(this.employeeFrom.valid && empName && empEmail && empSalary && this.selectedFile){      
+      this.employeeService.createEmployee({empName, empEmail, empSalary: Number(empSalary)}, this.selectedFile)
                         .subscribe({
                           next: (data)=>{
                             if(data && data.id){

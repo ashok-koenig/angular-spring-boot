@@ -20,10 +20,17 @@ getAllEmployees():Observable<Employee[]>{
   return this.http.get<Employee[]>(this.apiUrl, {headers: this.headers}).pipe(catchError(this.handleError),retry(2));
 }
 
-createEmployee(newEmployee: Employee):Observable<Employee>{
- 
-  return this.http.post<Employee>(this.apiUrl, newEmployee, {headers: this.headers}).pipe(catchError(this.handleError))
+createEmployee(newEmployee: Employee, file: File):Observable<Employee>{
+  const formData = new FormData();
+  formData.append('employee', new Blob([JSON.stringify(newEmployee)], { type: 'application/json' }));
+  formData.append('empPhoto', file);
+  return this.http.post<Employee>(this.apiUrl, formData, {headers: this.headers}).pipe(catchError(this.handleError))
 }
+
+// createEmployee(newEmployee: Employee):Observable<Employee>{
+ 
+//   return this.http.post<Employee>(this.apiUrl, newEmployee, {headers: this.headers}).pipe(catchError(this.handleError))
+// }
 
 deleteEmployeeById(id: number){
   return this.http.delete<any>(`${this.apiUrl}/${id}`, {headers: this.headers}).pipe(catchError(this.handleError))

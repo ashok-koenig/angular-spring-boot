@@ -24,6 +24,10 @@
         </div>
     </div>
     <div class="mb-2">
+        <label class="form-label">Employee Photo:</label>
+        <input class="form-control" type="file" (change)="onFileSelected($event)" required />
+    </div>
+    <div class="mb-2">
         <button [disabled]="employeeFrom.invalid" type="submit" class="btn btn-success">Add Employee</button>
         <p *ngIf="successMessage" class="text-success">{{successMessage}}</p>
         <p *ngIf="errorMessage" class="text-danger">{{errorMessage | json}}</p>
